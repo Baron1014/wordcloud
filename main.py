@@ -9,7 +9,11 @@ import seaborn as sns
 from PIL import Image
 from wordcloud import WordCloud
 from matplotlib.font_manager import FontProperties
-myfont=FontProperties(fname=r'C:\Windows\Fonts\msjh.ttc',size=14)
+
+font_path = "/System/Library/Fonts/STHeiti Medium.ttc"
+# font_path = r'C:\Windows\Fonts\msjh.ttc'
+
+myfont=FontProperties(fname=font_path, size=14)
 sns.set(font=myfont.get_family())
 sns.set_style("whitegrid",{"font.sans-serif":['Microsoft JhengHei']})
 
@@ -26,13 +30,14 @@ def wc(d, figname):
             contour_width=2,
             contour_color='steelblue',
             collocations = False,
-            font_path ="/System/Library/Fonts/STHeiti Medium.ttc"
+            font_path = font_path
     ).generate_from_frequencies(word_counts)
 
     plt.imshow(wc)
     plt.axis("off")
     wc.to_file(f"report/{figname}.jpg")
 
+# 主要為視覺化第8類問題
 def catbarplot(d, title):
     stick_name = [i for i in pd.unique(d['col'])]
 
@@ -41,7 +46,6 @@ def catbarplot(d, title):
     plt.xticks(range(len(stick_name)) ,[re.sub("(.{10})", "\\1\n", label, 0, re.DOTALL) for label in stick_name])
     plt.title(title)
     plt.tight_layout()
-    # plt.show()
     plt.savefig(f'./report/{title}.jpg')
     plt.close()
     
@@ -100,5 +104,5 @@ def barplot():
     catbarplot(d8, "學生課堂衝突行為")
 
 if __name__ == "__main__":
-    # main()
+    main()
     barplot()
