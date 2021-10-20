@@ -13,9 +13,13 @@ from matplotlib.font_manager import FontProperties
 font_path = "/System/Library/Fonts/STHeiti Medium.ttc"
 # font_path = r'C:\Windows\Fonts\msjh.ttc'
 
-myfont=FontProperties(fname=font_path, size=14)
-sns.set(font=myfont.get_family())
-sns.set_style("whitegrid",{"font.sans-serif":['Microsoft JhengHei']})
+#myfont=FontProperties(fname=font_path, size=14)
+#sns.set(font=myfont.get_family())
+#sns.set_style("whitegrid",{"font.sans-serif":['Microsoft JhengHei']})
+
+plt.rcParams['font.family'] = ['Arial Unicode MS']
+plt.rcParams['axes.unicode_minus'] = False
+sns.set_style("whitegrid",{"font.sans-serif":['Arial Unicode MS', 'Arial']})
 
 def wc(d, figname):
     mask = np.array(Image.open("cloud.png"))
@@ -36,6 +40,7 @@ def wc(d, figname):
     plt.imshow(wc)
     plt.axis("off")
     wc.to_file(f"report/{figname}.jpg")
+    print(figname, 'output done!!')
 
 # 主要為視覺化第8類問題
 def catbarplot(d, title):
@@ -48,6 +53,7 @@ def catbarplot(d, title):
     plt.tight_layout()
     plt.savefig(f'./report/{title}.jpg')
     plt.close()
+    print(title, 'output done!!')
     
 
 def main():
