@@ -81,6 +81,10 @@ def main():
     wc(d['col'], "媒體知識")
 
 def barplot():
+    # 1. 課程與目標知識
+    d1 = data.get_target_data()
+    catbarplot(d1, "課程與目標知識")
+    
     # 8.情景知識
     d8 = data.get_scene_data()
     catbarplot(d8, "課程情境氛圍營造")

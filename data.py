@@ -1,5 +1,17 @@
 import pandas as pd
 
+def get_target_data():
+    # 1. 課程與目標知識
+    dflist = list()
+    dflist.extend(['先有目標才設計課程' for _ in range(5)])
+    dflist.extend(['用能力指標訂教學目標' for _ in range(1)])
+    dflist.extend(['依照學生特性訂定目標' for _ in range(8)])
+    dflist.extend(['先設計課程再推回去符合的教學目標' for _ in range(1)])
+
+    return pd.DataFrame({
+        "col": dflist
+        })
+
 def get_coaching_data():
     # 輔導科
     coaching = list()
